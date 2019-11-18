@@ -6,9 +6,9 @@
 
 #include <string.h>
 
-const char * ssid = "flexlab2";
-const char * password = "flexiwifi";
-const int udpPort = 7001;
+const char * ssid = "TELLO-FE2F96";
+const char * password = "";
+const int udpPort = 8889;
 
 AsyncUDP udp;
 WiFiUDP udpSender;
@@ -55,8 +55,10 @@ void setup()
             packet.printf("Got %u bytes of data", packet.length());
 
             //send reply
-            sendMessage(packet.remoteIP().toString(), udpPort, "reply from esp32");
+            
         });
+
+        sendMessage("192.168.10.1", udpPort, "command");
     }
 }
 
